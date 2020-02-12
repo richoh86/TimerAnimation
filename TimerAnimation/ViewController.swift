@@ -22,11 +22,9 @@ class ViewController: UIViewController {
     
     private func setTimer() {
         timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-        target: self,
-        selector: #selector(runTimer),
-        userInfo: nil,
-        repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] timer in
+            self?.runTimer()
+        })
         timer.fire()
     }
     
@@ -68,7 +66,26 @@ class ViewController: UIViewController {
         let minLeft = min % 60
         // 3.남은 초 구하기
         let secLeft = seconds % 60
-        return "\(hour)시간 \(minLeft)분 \(secLeft)초 남았습니다."
+        var hourStr = ""
+        var minStr = ""
+        var secStr = ""
+        if hour < 10 {
+            hourStr = "0\(hour)"
+        } else {
+            hourStr = "\(hour)"
+        }
+        if minLeft < 10 {
+            minStr = "0\(minLeft)"
+        } else {
+            minStr = "\(minLeft)"
+        }
+        if secLeft < 10 {
+            secStr = "0\(secLeft)"
+        } else {
+            secStr = "\(secLeft)"
+        }
+//        let str = "\(hour) : \(minLeft) : \(secLeft)"
+        return "\(hourStr) : \(minStr) : \(secStr)"
     }
 }
 
