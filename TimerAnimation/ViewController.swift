@@ -25,6 +25,10 @@ class ViewController: UIViewController {
         
     }
     
+    private func test1() {
+        
+    }
+    
     private func setTimer() {
         timer.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] timer in
