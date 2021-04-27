@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         timer.fire()
     }
     
+    private func final() {
+        
+    }
+    
     @objc func runTimer() {
         var secondsLeft = getSecondsLeft()
         secondsLeft -= 1
